@@ -1,0 +1,26 @@
+{
+  "name": "sv-twjit",
+  "description": "Quickly scaffold a Svelte App with Just-in-time TailwindCSS compiler on Vite.",
+  "author": "Ales Vaupotic <ales@reepolee.com>",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "devDependencies": {
+    "@svitejs/vite-plugin-svelte": "^0.11.1",
+    "@tailwindcss/jit": "^0.1.18",
+    "autoprefixer": "^10.2.5",
+    "cssnano": "^5.0.1",
+    "postcss": "^8.2.12",
+    "postcss-load-config": "^3.0.1",
+    "svelte": "^3.37.0",
+    "svelte-preprocess": "^4.7.2",
+    "tailwindcss": "^2.1.2",
+    "vite": "^2.2.1"
+  },
+  "dependencies": {
+    "date-fns": "^2.21.1"
+  }
+}
