@@ -1,5 +1,5 @@
 <script>
-  import { onMount } from "svelte";
+  // import { onMount } from "svelte";
   import CountrySelect from "./Components/CountrySelect.svelte";
   import DataBlocks from "./Components/DataBlocks.svelte";
   import DataTile from "./Components/DataTile.svelte";
@@ -16,28 +16,38 @@
     const data = await res.json();
     return data;
   };
-  onMount(async () => {
+  const reset = async () => {
+    isLoading = true;
     const data = await fetchCovidData();
     dataDate = data.Date;
     stats = data.Global;
     countries = data.Countries;
     isLoading = false;
-  });
+  };
   function changeCountry(e) {
     stats = e.detail;
     title = e.detail.Country;
   }
+  reset();
 </script>
 
 <Header />
 <div class="container">
   {#if isLoading}
-    <!-- content here -->
     <Loading />
   {:else}
     <DataTile {dataDate} {title} />
     <DataBlocks {stats} />
     <CountrySelect {countries} on:get-country={changeCountry} />
+    {#if stats.Country}
+      <button
+        on:click={reset}
+        v-if="stats.Country"
+        class="bg-green-700 text-white rounded p-3 mt-10 focus:outline-none hover:bg-green-500"
+      >
+        Clear country
+      </button>
+    {/if}
   {/if}
 </div>
 
