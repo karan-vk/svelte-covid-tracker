@@ -6,8 +6,12 @@
   let selected = 0;
 
   function onChangeC() {
-    const country = countries.find((item) => item.ID === selected);
-    dispatch("get-country", country);
+    if (selected !== 0) {
+      const country = countries.find((item) => item.ID === selected);
+      dispatch("get-country", country);
+    } else {
+      dispatch("get-country", null);
+    }
   }
 </script>
 

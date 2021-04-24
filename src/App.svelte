@@ -13,6 +13,7 @@
   let countries = null;
   let title = "Global";
   let isLoading = true;
+  let data;
   const fetchCovidData = async () => {
     const res = await fetch("https://api.covid19api.com/summary");
     const data = await res.json();
@@ -20,7 +21,7 @@
   };
   const reset = async () => {
     isLoading = true;
-    const data = await fetchCovidData();
+    data = await fetchCovidData();
     dataDate = data.Date;
     stats = data.Global;
     title = "Global";
@@ -28,8 +29,16 @@
     isLoading = false;
   };
   function changeCountry(e) {
-    stats = e.detail;
-    title = e.detail.Country;
+    if (e.detail) {
+      stats = e.detail;
+      title = e.detail.Country;
+    } else {
+      title = "Global";
+      dataDate = data.Date;
+      stats = data.Global;
+      title = "Global";
+      countries = data.Countries;
+    }
   }
   reset();
 </script>
