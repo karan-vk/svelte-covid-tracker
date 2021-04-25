@@ -1,9 +1,9 @@
 <script>
-  import { format } from "date-fns";
+  import dayjs from "dayjs";
 
   export let title = null;
   export let dataDate = null;
-  $: timestamp = format(new Date(dataDate), "MMMM do yyyy , H:mm:ss a");
+  $: timestamp = dayjs(dataDate).format("MMMM D YYYY , h:mm:ss a");
 </script>
 
 <div class="text-center">

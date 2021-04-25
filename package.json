@@ -23,6 +23,6 @@
   },
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
-    "date-fns": "^2.21.1"
+    "dayjs": "^1.10.4"
   }
 }
